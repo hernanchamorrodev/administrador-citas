@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, Platform, View } from 'react-native';
+
+import { APP_NAME, COMPANY_NAME } from './constants';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.appName}>{APP_NAME}</Text>
+        <Text style={styles.companyName}>{COMPANY_NAME}</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#F9F9F9",
+    alignItems: "center",
+    paddingTop: Platform.OS === "android" ? 40 : 0,
   },
+  header: {
+    width: "97%",
+    height: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#252456",
+    borderRadius: 10,
+  },
+  appName: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#FFFFFF",
+  },
+  companyName: {
+    fontSize: 16,
+    color: "#FFFFFF",
+  }
 });
